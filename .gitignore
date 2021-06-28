@@ -103,3 +103,5 @@ spec/failures.txt
 *.json
 *.rdb
 .prettierignore
+config/credentials.yml.enc
+config/master.key
