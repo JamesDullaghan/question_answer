@@ -8,8 +8,8 @@ class ArticleSummizer
     @content = content
   end
 
-  def self.perform(url)
-    ::ArticleSummizer.new(url: url).perform
+  def self.perform(url, content)
+    ::ArticleSummizer.new(url: url, content: content).perform
   end
 
   # Shorten the article based on a url or content passed as an argument

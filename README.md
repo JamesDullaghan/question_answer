@@ -1,5 +1,13 @@
 # README
 
+### TODOs
+
+- [ ] Better url handling coming back from duckduckgo
+- [ ] Support for multiple search engines
+- [ ] Ability next answers if the content is no good and get the next search result (persisting)
+
+### Description
+
 Receive SMS texts and grab the first article and return a summized version of the article content
 
 This would be particularly cool as a service and would benefit a bunch of third world countryfolk who only have flip phones and want random questions answered

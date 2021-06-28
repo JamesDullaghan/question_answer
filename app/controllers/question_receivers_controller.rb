@@ -10,8 +10,20 @@ class QuestionReceiversController < ::ApplicationController
       # PARSED THE INITIAL SMS BODY
       summary = service.perform
 
+      if summary.blank?
+        render json: { errors: ::I18n.t('sms.summary.blank') }, status: :unprocessable_entity
+      end
+
       # SEND ANOTHER SMS HERE
       sms_client.perform
+    end
+
+    if from.nil?
+      render json: { errors: ::I18n.t('sms.from.blank') }, status: :unprocessable_entity
+    end
+
+    if body.nil?
+      render json: { errors: ::I18n.t('sms.body.blank') }, status: :unprocessable_entity
     end
 
     render json: { summary: summary }, status: :ok
@@ -20,7 +32,10 @@ class QuestionReceiversController < ::ApplicationController
   private
 
   def sms_client
-    @_sms_client ||= ::Sms::Client.new(to: from, message: summary)
+    @_sms_client ||= ::Sms::Client.new(
+      to: from,
+      message: summary,
+    )
   end
 
   def service
